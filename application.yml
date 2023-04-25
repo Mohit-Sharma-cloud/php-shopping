@@ -1,0 +1,98 @@
+server:
+  port: ${PORT:8080}
+
+logging:
+  file: flow.log
+
+cx-flow:
+  bug-tracker: JIRA
+  bug-tracker-impl:
+    - JIRA
+  branches:
+    - develop
+    - main
+  filter-severity:
+    - High
+  #filter-category:
+ # filter-cwe:
+  #filter-status:
+  mitre-url: https://cwe.mitre.org/data/definitions/%s.html
+  wiki-url: https://checkmarx.atlassian.net/wiki/spaces/AS/pages/79462432/Remediation+Guidance
+  
+checkmarx:
+  version: 9.4 # Not required for CxSAST version 8.x
+  username: mohit.sharma@nortonlifelock.com
+  password: Aery@1997
+  client-id: resource_owner_client
+  scope: access_control_api sast_rest_api
+  client-secret: 014DF517-39D1-4453-B7B3-9930C563627C
+  base-url: https://mgmt-checkmarx-0.mgmt.aws.lifelock.com
+  multi-tenant: true
+  scan-preset: Checkmarx Default
+  configuration: Default Configuration
+  team: /CxServer/SP/Company/Users  #CxServer, SP, Company, Users
+  scan-timeout: 120 # Webhook and --scan command line only, number of minutes
+  scan-polling: 20000
+  report-timeout: 300000
+  report-polling: 5000
+  preserve-xml: true
+  url: ${checkmarx.base-url}/cxrestapi
+  # WSDL Config
+  portal-url: ${checkmarx.base-url}/cxwebinterface/Portal/CxWebService.asmx
+  sdk-url: ${checkmarx.base-url}/cxwebinterface/SDK/CxSDKWebService.asmx
+  portal-wsdl: ${checkmarx.base-url}/Portal/CxWebService.asmx?wsdl
+  sdk-wsdl: ${checkmarx.base-url}/SDK/CxSDKWebService.asmx?wsdl
+  custom-state-map:
+    "5": "SUSPICIOUS"
+  post-action-postback-id: 123456
+  settings-override: true #default false if not provide
+  cx-branch: false
+  scan-queuing: true
+  scan-queuing-timeout: 720 # Webhook and --scan command line only, number of minutes
+  email-notifications:
+    after-scan:
+      - mohit.sharma@gendigital.com
+    before-scan:
+      - mohit.sharma@gendigital.com
+    failed-scan:
+      - mohit.sharma@gendigital.com
+  project-branching-check-count: 5
+  project-branching-check-interval: 10
+  restrict-results-to-branch: true
+
+
+jira:
+  url: https://jira-stg.corp.nortonlifelock.com
+  username: Mohit.Sharma
+  token: Think@0607!
+  project: CXTEC
+  issue-type: Bug
+  label-prefix: SAST
+  priorities:
+    Critical: High
+    High: High
+    Medium: Medium
+    Low: Low
+    Informational: Lowest
+  open-transition: In Review
+  close-transition: Done
+  open-status:
+    - To Do
+    - In Progress
+    - In Review
+  closed-status:
+    - Done
+  fields:
+    - type: result
+      name: application
+      jira-field-name: Application
+      jira-field-type: label
+    - type: result
+      name: category
+      jira-field-name: Category 
+      jira-field-type: label
+    - type: static
+      name: application-type
+      jira-field-name: Application Type
+      jira-field-type: single-select
+      jira-default-value: Web
