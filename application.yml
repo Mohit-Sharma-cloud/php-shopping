@@ -5,7 +5,7 @@ logging:
   file: flow.log
 
 cx-flow:
-  bug-tracker: 
+  bug-tracker: JIRA
   bug-tracker-impl:
     - JIRA
   branches:
@@ -21,12 +21,12 @@ cx-flow:
   
 checkmarx:
   version: 9.4 # Not required for CxSAST version 8.x
-  username: 
-  password: 
+  username: mohit.sharma@nortonlifelock.com
+  password: Aery@1997
   client-id: resource_owner_client
   scope: access_control_api sast_rest_api
   client-secret: 014DF517-39D1-4453-B7B3-9930C563627C
-  base-url: 
+  base-url: https://mgmt-checkmarx-0.mgmt.aws.lifelock.com
   multi-tenant: true
   scan-preset: Checkmarx Default
   configuration: Default Configuration
@@ -62,9 +62,9 @@ checkmarx:
 
 
 jira:
-  url: 
-  username: 
-  token: 
+  url: https://jira-stg.corp.nortonlifelock.com
+  username: Mohit.Sharma
+  token: Think@0607!
   project: CXTEC
   issue-type: Bug
   label-prefix: SAST
