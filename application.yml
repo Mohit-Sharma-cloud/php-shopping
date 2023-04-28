@@ -13,6 +13,7 @@ cx-flow:
     - main
   filter-severity:
     - High
+    - Medium
   #filter-category:
  # filter-cwe:
   #filter-status:
