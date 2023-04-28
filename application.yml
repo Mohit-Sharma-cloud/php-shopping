@@ -49,13 +49,6 @@ checkmarx:
   cx-branch: false
   scan-queuing: true
   scan-queuing-timeout: 720 # Webhook and --scan command line only, number of minutes
-  email-notifications:
-    after-scan:
-      - 
-    before-scan:
-      - 
-    failed-scan:
-      - 
   project-branching-check-count: 5
   project-branching-check-interval: 10
   restrict-results-to-branch: true
