@@ -14,7 +14,9 @@ cx-flow:
   filter-severity:
     - High
     - Medium
-  #filter-category:
+  filter-state:
+    - To Verify
+    - Confirmed
  # filter-cwe:
   #filter-status:
   mitre-url: https://cwe.mitre.org/data/definitions/%s.html
@@ -87,6 +89,6 @@ jira:
       jira-field-type: label
     - type: static
       name: application-type
-      jira-field-name: Application Type
-      jira-field-type: single-select
+      jira-field-name: Labels
+      jira-field-type: label
       jira-default-value: Web
